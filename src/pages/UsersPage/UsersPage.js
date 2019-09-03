@@ -1,21 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { fetchUsersList } from '../../store/users/thunks';
 
-import { fetchUsersList } from './store/users/thunks';
+import Table from './../../components/Table';
 
-class App extends React.Component {
+class UsersPage extends React.Component {
   componentDidMount() {
     this.props.fetchUsersList();
   }
 
   render() {
     const { usersList } = this.props;
+    const tableData = {
+      columns: ['Name', 'User Name', 'City', 'Company'],
+      rows: usersList.map(user => ({
+        id: user.id,
+        Name: user.name,
+        'User Name': user.username,
+        City: user.address.city,
+        Company: user.company.name
+      }))
+    };
 
     return (
-      <div className="App">
-        {usersList.map(user => (
-          <div key={user.id}>{user.name}</div>
-        ))}
+      <div>
+        <Table data={tableData} />
       </div>
     );
   }
@@ -38,4 +47,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(UsersPage);
