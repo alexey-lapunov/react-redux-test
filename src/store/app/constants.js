@@ -1,0 +1,1 @@
+export const IS_OPEN_BURGER_MENU = 'IS_OPEN_BURGER_MENU';
