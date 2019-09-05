@@ -5,12 +5,12 @@ import {
 } from './constants';
 
 const DEFAULT_STATE = {
-  entities: [],
+  userList: [],
   error: null,
   isFetching: false
 };
 
-const peopleReducer = (state = DEFAULT_STATE, action) => {
+const usersReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case FETCH_PEOPLE:
       return {
@@ -25,11 +25,11 @@ const peopleReducer = (state = DEFAULT_STATE, action) => {
     case FETCH_PEOPLE_SUCCESS:
       return {
         ...state,
-        entities: action.people
+        userList: action.users
       };
     default:
       return state;
   }
 };
 
-export default peopleReducer;
+export default usersReducer;

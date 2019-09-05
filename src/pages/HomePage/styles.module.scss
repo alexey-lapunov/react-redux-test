@@ -1,0 +1,18 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+}
+
+.title {
+  font-size: 40px;
+
+  span {
+    display: inline-block;
+    width: 100%;
+
+    font-size: 20px;
+  }
+}

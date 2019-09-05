@@ -3,8 +3,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { onIsOpenBurgerMenu } from '../../store/app/actions';
 
-import UserPage from '../UsersPage';
+import UsersPage from '../UsersPage';
 import HomePage from '../HomePage';
+import UserPage from '../UserPage';
 
 import Header from '../../components/Header';
 import BurgerMenu from '../../components/BurgerMenu';
@@ -26,7 +27,8 @@ class App extends React.Component {
           <div className={styles.navbarOuter}>
             <div className={styles.container}>
               <Route exact path="/" component={HomePage} />
-              <Route path="/users" component={UserPage} />
+              <Route exact path="/users" component={UsersPage} />
+              <Route exact path="/users/:userId" component={UserPage} />
             </div>
           </div>
         </BrowserRouter>

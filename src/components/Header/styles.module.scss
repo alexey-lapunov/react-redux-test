@@ -30,6 +30,10 @@
   &:hover {
     transform: rotate(-90deg);
   }
+
+  &:active {
+    transform: scale(.8);
+  }
 }
 
 .burger {
@@ -42,6 +46,7 @@
   background: none;
   border: none;
   cursor: pointer;
+  outline: none;
 
   span.burgerLine {
     position: absolute;

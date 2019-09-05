@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 const Header = ({ onIsOpenMenu }) => {
@@ -6,7 +7,7 @@ const Header = ({ onIsOpenMenu }) => {
     <div className={styles.header}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.logo}></div>
+          <Link to="/" className={styles.logo}></Link>
           <button
             type="button"
             className={styles.burger}

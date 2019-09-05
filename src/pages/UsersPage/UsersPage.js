@@ -2,29 +2,51 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUsersList } from '../../store/users/thunks';
 
-import Table from './../../components/Table';
+import { Table, Thead, Tbody, Row, Cell } from './../../components/Table';
+
+import styles from './styles.module.scss';
 
 class UsersPage extends React.Component {
+  state = {
+    usersList: []
+  };
+
   componentDidMount() {
-    this.props.fetchUsersList();
+    this.props.fetchUsersList().then(usersList => this.setState({ usersList }));
   }
 
   render() {
-    const { usersList } = this.props;
-    const tableData = {
-      columns: ['Name', 'User Name', 'City', 'Company'],
-      rows: usersList.map(user => ({
-        id: user.id,
-        Name: user.name,
-        'User Name': user.username,
-        City: user.address.city,
-        Company: user.company.name
-      }))
-    };
+    const { usersList } = this.state;
+    const { history } = this.props;
 
     return (
-      <div>
-        <Table data={tableData} />
+      <div className={styles.users}>
+        <div className={styles.container}>
+          <h2 className={styles.title}>Users list</h2>
+          <Table>
+            <Thead>
+              <Row>
+                <Cell>Name</Cell>
+                <Cell>User Name</Cell>
+                <Cell>City</Cell>
+                <Cell>Company</Cell>
+              </Row>
+            </Thead>
+            <Tbody>
+              {usersList.map(user => (
+                <Row
+                  key={user.id}
+                  onClick={() => history.push(`/users/${user.id}`)}
+                >
+                  <Cell>{user.name}</Cell>
+                  <Cell>{user.username}</Cell>
+                  <Cell>{user.address.city}</Cell>
+                  <Cell>{user.company.name}</Cell>
+                </Row>
+              ))}
+            </Tbody>
+          </Table>
+        </div>
       </div>
     );
   }
@@ -32,9 +54,9 @@ class UsersPage extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    usersList: state.people.entities,
-    error: state.people.error,
-    isFetching: state.people.isFetching
+    usersList: state.users.userList,
+    error: state.users.error,
+    isFetching: state.users.isFetching
   };
 };
 

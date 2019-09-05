@@ -10,8 +10,10 @@ const fetchUsersList = () => {
 
       dispatch(fetchPeopleSuccess(people));
       dispatch(fetchPeople(false));
+
+      return people;
     } catch (error) {
-      dispatch(fetchPeopleFail('Егор!'));
+      dispatch(fetchPeopleFail('Егор Users!'));
     }
   };
 };

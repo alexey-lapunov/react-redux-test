@@ -4,25 +4,23 @@ import {
   FETCH_PEOPLE_SUCCESS
 } from './constants';
 
-const fetchPeople = bool => {
+export const featchUser = bool => {
   return {
     type: FETCH_PEOPLE,
     bool
   };
 };
 
-const fetchPeopleFail = text => {
+export const featchUserError = text => {
   return {
     type: FETCH_PEOPLE_FAIL,
     text
   };
 };
 
-const fetchPeopleSuccess = users => {
+export const featchUserSuccess = user => {
   return {
     type: FETCH_PEOPLE_SUCCESS,
-    users
+    user
   };
 };
-
-export { fetchPeople, fetchPeopleFail, fetchPeopleSuccess };
