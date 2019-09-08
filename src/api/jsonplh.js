@@ -1,7 +1,7 @@
 const BASE_URL = 'http://jsonplaceholder.typicode.com';
 
 const getUsersUrl = () => `${BASE_URL}/users`;
-const getUserUrl = id => `${BASE_URL}/users/${id}]`;
+const getUserUrl = id => `${BASE_URL}/users/${id}`;
 const getPostsUrl = () => `${BASE_URL}/posts`;
 
 const getResourse = async url => {

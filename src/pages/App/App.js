@@ -6,6 +6,7 @@ import { onIsOpenBurgerMenu } from '../../store/app/actions';
 import UsersPage from '../UsersPage';
 import HomePage from '../HomePage';
 import UserPage from '../UserPage';
+import PostsPage from '../PostsPage';
 
 import Header from '../../components/Header';
 import BurgerMenu from '../../components/BurgerMenu';
@@ -29,6 +30,7 @@ class App extends React.Component {
               <Route exact path="/" component={HomePage} />
               <Route exact path="/users" component={UsersPage} />
               <Route exact path="/users/:userId" component={UserPage} />
+              <Route exact path="/posts" component={PostsPage} />
             </div>
           </div>
         </BrowserRouter>

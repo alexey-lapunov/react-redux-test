@@ -17,35 +17,39 @@ class UsersPage extends React.Component {
 
   render() {
     const { usersList } = this.state;
-    const { history } = this.props;
+    const { history, isFetching } = this.props;
 
     return (
       <div className={styles.users}>
         <div className={styles.container}>
           <h2 className={styles.title}>Users list</h2>
-          <Table>
-            <Thead>
-              <Row>
-                <Cell>Name</Cell>
-                <Cell>User Name</Cell>
-                <Cell>City</Cell>
-                <Cell>Company</Cell>
-              </Row>
-            </Thead>
-            <Tbody>
-              {usersList.map(user => (
-                <Row
-                  key={user.id}
-                  onClick={() => history.push(`/users/${user.id}`)}
-                >
-                  <Cell>{user.name}</Cell>
-                  <Cell>{user.username}</Cell>
-                  <Cell>{user.address.city}</Cell>
-                  <Cell>{user.company.name}</Cell>
+          {isFetching ? (
+            <span>Loading...</span>
+          ) : (
+            <Table>
+              <Thead>
+                <Row>
+                  <Cell>Name</Cell>
+                  <Cell>User Name</Cell>
+                  <Cell>City</Cell>
+                  <Cell>Company</Cell>
                 </Row>
-              ))}
-            </Tbody>
-          </Table>
+              </Thead>
+              <Tbody>
+                {usersList.map(user => (
+                  <Row
+                    key={user.id}
+                    onClick={() => history.push(`/users/${user.id}`)}
+                  >
+                    <Cell>{user.name}</Cell>
+                    <Cell>{user.username}</Cell>
+                    <Cell>{user.address.city}</Cell>
+                    <Cell>{user.company.name}</Cell>
+                  </Row>
+                ))}
+              </Tbody>
+            </Table>
+          )}
         </div>
       </div>
     );
@@ -54,7 +58,7 @@ class UsersPage extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    usersList: state.users.userList,
+    usersList: state.users.people,
     error: state.users.error,
     isFetching: state.users.isFetching
   };

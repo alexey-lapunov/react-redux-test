@@ -18,10 +18,10 @@ const fetchPeopleFail = text => {
   };
 };
 
-const fetchPeopleSuccess = users => {
+const fetchPeopleSuccess = people => {
   return {
     type: FETCH_PEOPLE_SUCCESS,
-    users
+    people
   };
 };
 

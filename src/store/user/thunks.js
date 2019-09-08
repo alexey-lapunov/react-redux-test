@@ -1,19 +1,25 @@
 import { getUser } from '../../api/jsonplh';
-import { featchUser, featchUserError, featchUserSuccess } from './action';
+import {
+  featchPerson,
+  featchPersonError,
+  featchPersonSuccess
+} from './actions';
 
-export const featchUser = id => {
+const featchUser = id => {
   return async dispatch => {
     try {
-      dispatch(featchUser(true));
+      dispatch(featchPerson(true));
 
       const user = await getUser(id);
 
-      dispatch(featchUser(false));
-      dispatch(featchUserSuccess(user));
+      dispatch(featchPerson(false));
+      dispatch(featchPersonSuccess(user));
 
       return user;
     } catch (error) {
-      dispatch(featchUserError('Егор User!'));
+      dispatch(featchPersonError('Егор User!'));
     }
   };
 };
+
+export { featchUser };

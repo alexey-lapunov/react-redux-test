@@ -5,7 +5,7 @@ import {
 } from './constants';
 
 const DEFAULT_STATE = {
-  userList: [],
+  people: [],
   error: null,
   isFetching: false
 };
@@ -25,7 +25,7 @@ const usersReducer = (state = DEFAULT_STATE, action) => {
     case FETCH_PEOPLE_SUCCESS:
       return {
         ...state,
-        userList: action.users
+        people: action.people
       };
     default:
       return state;

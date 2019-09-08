@@ -1,7 +1,7 @@
 import {
-  FEATCH_USER,
-  FEATCH_USER_ERROR,
-  FEATCH_USER_SUCCESS
+  FEATCH_PERSON,
+  FEATCH_PERSON_FAIL,
+  FEATCH_PERSON_SUCCESS
 } from './constants';
 
 const DEFAULT_STATE = {
@@ -10,26 +10,26 @@ const DEFAULT_STATE = {
   error: null
 };
 
-const userReducer = (state = DEFAULT_STATE, action) => {
+const personReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
-    case FEATCH_USER:
+    case FEATCH_PERSON:
       return {
         ...state,
         isFetching: action.bool
       };
-    case FEATCH_USER_ERROR:
+    case FEATCH_PERSON_FAIL:
       return {
         ...state,
         error: action.bool
       };
-    case FEATCH_USER_SUCCESS:
+    case FEATCH_PERSON_SUCCESS:
       return {
         ...state,
-        person: action.user
+        person: action.person
       };
     default:
       return state;
   }
 };
 
-export default userReducer;
+export default personReducer;
