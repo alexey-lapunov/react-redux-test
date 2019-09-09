@@ -7,7 +7,7 @@ const Header = ({ onIsOpenMenu }) => {
     <div className={styles.header}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <Link to="/" className={styles.logo}></Link>
+          <Link to="/" className={styles.logo} />
           <button
             type="button"
             className={styles.burger}

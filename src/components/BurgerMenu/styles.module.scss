@@ -1,5 +1,3 @@
-@import '../../pages/App/variables';
-
 .menu {
   position: fixed;
   top: 0;
@@ -10,7 +8,7 @@
 
   pointer-events: none;
 
-  &.menuOpen {
+  &.menu-open {
     pointer-events: auto;
 
     .box {
@@ -62,6 +60,7 @@
 
 .list {
   list-style: none;
+  text-align: center;
 }
 
 .item {

@@ -1,5 +1,5 @@
 {
-  "name": "star-db-redux",
+  "name": "react-redux-test",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -139,5 +139,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "react-svg-loader": "^3.0.3",
+    "sass-resources-loader": "^2.0.1"
   }
 }

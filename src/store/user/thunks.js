@@ -14,8 +14,6 @@ const featchUser = id => {
 
       dispatch(featchPerson(false));
       dispatch(featchPersonSuccess(user));
-
-      return user;
     } catch (error) {
       dispatch(featchPersonError('Егор User!'));
     }

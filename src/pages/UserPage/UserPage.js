@@ -3,6 +3,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { featchUser } from './../../store/user/thunks';
 
+import UserCard from './../../components/UserCard';
+
+import styles from './styles.module.scss';
+
 class UserPage extends React.Component {
   componentDidMount() {
     this.getData();
@@ -16,9 +20,12 @@ class UserPage extends React.Component {
 
   render() {
     const { user } = this.props;
+
     return (
-      <div>
-        <h1>{user.name}</h1>
+      <div className={styles.userPage}>
+        <div className={styles.userCard}>
+          <UserCard userData={user} />
+        </div>
       </div>
     );
   }
