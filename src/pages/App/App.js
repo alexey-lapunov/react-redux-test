@@ -29,7 +29,7 @@ class App extends React.Component {
             <div className={styles.container}>
               <Route exact path="/" component={HomePage} />
               <Route exact path="/users" component={UsersPage} />
-              <Route exact path="/users/:userId" component={UserPage} />
+              <Route path="/users/:userId" component={UserPage} />
               <Route exact path="/posts" component={PostsPage} />
             </div>
           </div>

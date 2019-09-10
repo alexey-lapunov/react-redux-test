@@ -20,7 +20,7 @@ const usersReducer = (state = DEFAULT_STATE, action) => {
     case FETCH_PEOPLE_FAIL:
       return {
         ...state,
-        arror: action.text
+        error: action.text
       };
     case FETCH_PEOPLE_SUCCESS:
       return {

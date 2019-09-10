@@ -15,41 +15,56 @@ class UsersPage extends React.Component {
     this.props.fetchUsersList().then(usersList => this.setState({ usersList }));
   }
 
-  render() {
-    const { usersList } = this.state;
-    const { history, isFetching } = this.props;
+  showLoading = () => <span>Loading...</span>;
 
+  showError = () => <span>Error =(</span>;
+
+  showContent = () => {
+    const { usersList } = this.state;
+    const { history } = this.props;
+
+    return (
+      <Table>
+        <Thead>
+          <Row>
+            <Cell>Name</Cell>
+            <Cell>User Name</Cell>
+            <Cell>City</Cell>
+            <Cell>Company</Cell>
+          </Row>
+        </Thead>
+        <Tbody>
+          {usersList.map(user => (
+            <Row
+              key={user.id}
+              onClick={() => history.push(`/users/${user.id}`)}
+            >
+              <Cell>{user.name}</Cell>
+              <Cell>{user.username}</Cell>
+              <Cell>{user.address.city}</Cell>
+              <Cell>{user.company.name}</Cell>
+            </Row>
+          ))}
+        </Tbody>
+      </Table>
+    );
+  };
+
+  renderFunction = () => {
+    const { isFetching, error } = this.props;
+
+    if (isFetching) return this.showLoading();
+    if (error) return this.showError();
+
+    return this.showContent();
+  };
+
+  render() {
     return (
       <div className={styles.users}>
         <div className={styles.container}>
           <h2 className={styles.title}>Users list</h2>
-          {isFetching ? (
-            <span>Loading...</span>
-          ) : (
-            <Table>
-              <Thead>
-                <Row>
-                  <Cell>Name</Cell>
-                  <Cell>User Name</Cell>
-                  <Cell>City</Cell>
-                  <Cell>Company</Cell>
-                </Row>
-              </Thead>
-              <Tbody>
-                {usersList.map(user => (
-                  <Row
-                    key={user.id}
-                    onClick={() => history.push(`/users/${user.id}`)}
-                  >
-                    <Cell>{user.name}</Cell>
-                    <Cell>{user.username}</Cell>
-                    <Cell>{user.address.city}</Cell>
-                    <Cell>{user.company.name}</Cell>
-                  </Row>
-                ))}
-              </Tbody>
-            </Table>
-          )}
+          {this.renderFunction()}
         </div>
       </div>
     );

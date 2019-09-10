@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from './styles.module.scss';
+import { ReactComponent as NoPhotoIcon } from './../../svg/noPhoto.svg';
 
 const UserCard = ({ userData }) => {
   const {
@@ -8,6 +9,7 @@ const UserCard = ({ userData }) => {
     username,
     email,
     website,
+    photo = null,
     company: { name: companyName } = {}
   } = userData;
 
@@ -15,7 +17,13 @@ const UserCard = ({ userData }) => {
     <div className={styles.userCard}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.photo}></div>
+          <div className={styles.photo}>
+            {photo ? (
+              <img src={photo} />
+            ) : (
+              <NoPhotoIcon className={styles.photoStub} />
+            )}
+          </div>
           <div className={styles.info}>
             <div className={styles.header}>
               <span className={styles.userName}>{username}</span>

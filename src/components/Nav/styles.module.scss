@@ -1,0 +1,39 @@
+.nav {
+  display: flex;
+}
+
+.item {
+  &:not(:first-of-type) {
+    margin: 0 0 0 20px;
+  }
+}
+
+.link {
+  position: relative;
+
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: none;
+
+  color: $color-base;
+
+  &:before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+
+    width: 0;
+    height: 3px;
+    background-color: $color-base;
+
+    transition: width .25s;
+  }
+
+  &-active {
+    &:before {
+      width: 100%;
+    }
+  }
+}

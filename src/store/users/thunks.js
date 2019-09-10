@@ -13,6 +13,7 @@ const fetchUsersList = () => {
 
       return people;
     } catch (error) {
+      dispatch(fetchPeople(false));
       dispatch(fetchPeopleFail('Егор Users!'));
     }
   };
