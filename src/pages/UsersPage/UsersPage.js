@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUsersList } from '../../store/users/thunks';
 
-import { Table, Thead, Tbody, Row, Cell } from './../../components/Table';
+import UserTable from './../../components/UserTable';
 
 import styles from './styles.module.scss';
 
@@ -12,7 +12,9 @@ class UsersPage extends React.Component {
   };
 
   componentDidMount() {
-    this.props.fetchUsersList().then(usersList => this.setState({ usersList }));
+    this.props
+      .fetchUsersList()
+      .then(data => this.setState({ usersList: data }));
   }
 
   showLoading = () => <span>Loading...</span>;
@@ -23,31 +25,9 @@ class UsersPage extends React.Component {
     const { usersList } = this.state;
     const { history } = this.props;
 
-    return (
-      <Table>
-        <Thead>
-          <Row>
-            <Cell>Name</Cell>
-            <Cell>User Name</Cell>
-            <Cell>City</Cell>
-            <Cell>Company</Cell>
-          </Row>
-        </Thead>
-        <Tbody>
-          {usersList.map(user => (
-            <Row
-              key={user.id}
-              onClick={() => history.push(`/users/${user.id}`)}
-            >
-              <Cell>{user.name}</Cell>
-              <Cell>{user.username}</Cell>
-              <Cell>{user.address.city}</Cell>
-              <Cell>{user.company.name}</Cell>
-            </Row>
-          ))}
-        </Tbody>
-      </Table>
-    );
+    console.log(usersList);
+
+    return <UserTable usersList={usersList} history={history} />;
   };
 
   renderFunction = () => {

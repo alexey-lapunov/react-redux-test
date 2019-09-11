@@ -1,3 +1,5 @@
+import { all } from 'q';
+
 const BASE_URL = 'http://jsonplaceholder.typicode.com';
 
 const getUsersUrl = () => `${BASE_URL}/users`;
@@ -33,3 +35,8 @@ export const getPosts = async () => {
 
   return posts;
 };
+
+// export const getUserPosts = async id => {
+//   const allPosts = getPosts();
+//   return allPosts.filter(item => [])
+// }
