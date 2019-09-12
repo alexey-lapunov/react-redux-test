@@ -5,9 +5,16 @@ import {
 } from './constants';
 
 const DEFAULT_STATE = {
-  person: {},
-  isFetching: false,
-  error: null
+  person: {
+    data: {},
+    isFetching: false,
+    error: null
+  },
+  posts: {
+    data: [],
+    isFetching: false,
+    error: null
+  }
 };
 
 const personReducer = (state = DEFAULT_STATE, action) => {
@@ -15,17 +22,26 @@ const personReducer = (state = DEFAULT_STATE, action) => {
     case FEATCH_PERSON:
       return {
         ...state,
-        isFetching: action.bool
+        person: {
+          ...state.person,
+          isFetching: action.bool
+        }
       };
     case FEATCH_PERSON_FAIL:
       return {
         ...state,
-        error: action.bool
+        person: {
+          ...state.person,
+          error: action.bool
+        }
       };
     case FEATCH_PERSON_SUCCESS:
       return {
         ...state,
-        person: action.person
+        person: {
+          ...state.person,
+          data: action.person
+        }
       };
     default:
       return state;

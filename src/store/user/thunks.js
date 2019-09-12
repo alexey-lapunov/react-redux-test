@@ -1,4 +1,4 @@
-import { getUser } from '../../api/jsonplh';
+import { getUser, getUserPosts } from '../../api/jsonplh';
 import {
   featchPerson,
   featchPersonError,
@@ -19,5 +19,13 @@ const featchUser = id => {
     }
   };
 };
+
+// const featchUserPosts = id => {
+//   return async dispatch => {
+//     try {
+
+//     }
+//   }
+// }
 
 export { featchUser };

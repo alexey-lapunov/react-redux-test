@@ -25,8 +25,6 @@ class UsersPage extends React.Component {
     const { usersList } = this.state;
     const { history } = this.props;
 
-    console.log(usersList);
-
     return <UserTable usersList={usersList} history={history} />;
   };
 

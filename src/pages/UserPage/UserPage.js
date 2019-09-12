@@ -21,21 +21,28 @@ class UserPage extends React.Component {
   };
 
   render() {
-    const { user, match } = this.props;
+    const {
+      user: { data: userData },
+      match
+    } = this.props;
 
     return (
       <div className={styles.userPage}>
         <div className={styles.userCard}>
-          <UserCard userData={user} />
+          <UserCard userData={userData} />
         </div>
         <div className={styles.nav}>
           <Nav>
+            <NavItem to={`${match.url}/posts`} text="Posts" />
             <NavItem to={`${match.url}/photos`} text="Photos" />
             <NavItem to={`${match.url}/todos`} text="Todos" />
-            <NavItem to={`${match.url}/posts`} text="Posts" />
           </Nav>
         </div>
         <div className={styles.routers}>
+          <Route
+            path={`${match.url}/posts`}
+            component={() => <span>posts</span>}
+          />
           <Route
             path={`${match.url}/photos`}
             component={() => <span>photo</span>}
@@ -43,10 +50,6 @@ class UserPage extends React.Component {
           <Route
             path={`${match.url}/todos`}
             component={() => <span>todos</span>}
-          />
-          <Route
-            path={`${match.url}/posts`}
-            component={() => <span>posts</span>}
           />
         </div>
       </div>
@@ -56,9 +59,11 @@ class UserPage extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.user.person,
-    isFetching: state.user.isFetching,
-    error: state.user.isFetching
+    user: {
+      data: state.user.person.data,
+      isFetching: state.user.person.isFetching,
+      error: state.user.person.isFetching
+    }
   };
 };
 
