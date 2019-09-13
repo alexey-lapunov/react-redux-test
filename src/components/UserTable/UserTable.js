@@ -15,7 +15,10 @@ const UserTable = ({ usersList, history }) => {
       </Thead>
       <Tbody>
         {usersList.map(user => (
-          <Row key={user.id} onClick={() => history.push(`/users/${user.id}`)}>
+          <Row
+            key={user.id}
+            onClick={() => history.push(`/users/${user.id}/posts`)}
+          >
             <Cell>{user.name}</Cell>
             <Cell>{user.username}</Cell>
             <Cell>{user.address.city}</Cell>

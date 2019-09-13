@@ -1,9 +1,10 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { featchUser } from './../../store/user/thunks';
+import { featchUser, featchUserPosts } from './../../store/user/thunks';
 
 import UserCard from './../../components/UserCard';
+import { UserPosts } from './../../components/UserPosts';
 import { Route } from 'react-router-dom';
 import { Nav, NavItem } from './../../components/Nav';
 
@@ -15,14 +16,16 @@ class UserPage extends React.Component {
   }
 
   getData = () => {
-    const { featchUser, match } = this.props;
+    const { featchUser, featchUserPosts, match } = this.props;
 
     featchUser(match.params.userId);
+    featchUserPosts(match.params.userId);
   };
 
   render() {
     const {
       user: { data: userData },
+      posts: { data: userPosts },
       match
     } = this.props;
 
@@ -41,7 +44,7 @@ class UserPage extends React.Component {
         <div className={styles.routers}>
           <Route
             path={`${match.url}/posts`}
-            component={() => <span>posts</span>}
+            component={() => <UserPosts posts={userPosts} />}
           />
           <Route
             path={`${match.url}/photos`}
@@ -63,13 +66,19 @@ const mapStateToProps = state => {
       data: state.user.person.data,
       isFetching: state.user.person.isFetching,
       error: state.user.person.isFetching
+    },
+    posts: {
+      data: state.user.posts.data,
+      isFetching: state.user.posts.isFetching,
+      error: state.user.posts.isFetching
     }
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    featchUser: id => dispatch(featchUser(id))
+    featchUser: id => dispatch(featchUser(id)),
+    featchUserPosts: id => dispatch(featchUserPosts(id))
   };
 };
 

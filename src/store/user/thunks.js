@@ -2,7 +2,10 @@ import { getUser, getUserPosts } from '../../api/jsonplh';
 import {
   featchPerson,
   featchPersonError,
-  featchPersonSuccess
+  featchPersonSuccess,
+  featchPersonPosts,
+  featchPersonPostsError,
+  featchPersonPostsSuccess
 } from './actions';
 
 const featchUser = id => {
@@ -20,12 +23,19 @@ const featchUser = id => {
   };
 };
 
-// const featchUserPosts = id => {
-//   return async dispatch => {
-//     try {
+const featchUserPosts = id => {
+  return async dispatch => {
+    try {
+      dispatch(featchPersonPosts(true));
 
-//     }
-//   }
-// }
+      const posts = await getUserPosts(id);
 
-export { featchUser };
+      dispatch(featchPersonPosts(false));
+      dispatch(featchPersonPostsSuccess(posts));
+    } catch (error) {
+      dispatch(featchPersonPostsError('Егор User Posts!'));
+    }
+  };
+};
+
+export { featchUser, featchUserPosts };

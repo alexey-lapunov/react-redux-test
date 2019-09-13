@@ -1,7 +1,10 @@
 import {
   FEATCH_PERSON,
   FEATCH_PERSON_FAIL,
-  FEATCH_PERSON_SUCCESS
+  FEATCH_PERSON_SUCCESS,
+  FEATCH_PERSON_POSTS,
+  FEATCH_PERSON_POSTS_FAIL,
+  FEATCH_PERSON_POSTS_SUCCESS
 } from './constants';
 
 const DEFAULT_STATE = {
@@ -41,6 +44,30 @@ const personReducer = (state = DEFAULT_STATE, action) => {
         person: {
           ...state.person,
           data: action.person
+        }
+      };
+    case FEATCH_PERSON_POSTS:
+      return {
+        ...state,
+        posts: {
+          ...state.posts,
+          isFetching: action.bool
+        }
+      };
+    case FEATCH_PERSON_POSTS_FAIL:
+      return {
+        ...state,
+        posts: {
+          ...state.posts,
+          error: action.bool
+        }
+      };
+    case FEATCH_PERSON_POSTS_SUCCESS:
+      return {
+        ...state,
+        posts: {
+          ...state.posts,
+          data: action.posts
         }
       };
     default:
