@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { onOpenModalPost } from './../../store/user/actions';
 import { featchUser, featchUserPosts } from './../../store/user/thunks';
 
 import UserCard from './../../components/UserCard';
@@ -25,7 +26,8 @@ class UserPage extends React.Component {
   render() {
     const {
       user: { data: userData },
-      posts: { data: userPosts },
+      posts: { data: userPosts, isModalOpen },
+      onOpenModalPost,
       match
     } = this.props;
 
@@ -44,7 +46,13 @@ class UserPage extends React.Component {
         <div className={styles.routers}>
           <Route
             path={`${match.url}/posts`}
-            component={() => <UserPosts posts={userPosts} />}
+            component={() => (
+              <UserPosts
+                posts={userPosts}
+                isModalOpen={isModalOpen}
+                onModalOpen={onOpenModalPost}
+              />
+            )}
           />
           <Route
             path={`${match.url}/photos`}
@@ -70,7 +78,8 @@ const mapStateToProps = state => {
     posts: {
       data: state.user.posts.data,
       isFetching: state.user.posts.isFetching,
-      error: state.user.posts.isFetching
+      error: state.user.posts.isFetching,
+      isModalOpen: state.user.posts.isModalOpen
     }
   };
 };
@@ -78,7 +87,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     featchUser: id => dispatch(featchUser(id)),
-    featchUserPosts: id => dispatch(featchUserPosts(id))
+    featchUserPosts: id => dispatch(featchUserPosts(id)),
+    onOpenModalPost: bool => dispatch(onOpenModalPost(bool))
   };
 };
 

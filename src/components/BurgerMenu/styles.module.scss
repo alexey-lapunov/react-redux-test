@@ -8,6 +8,8 @@
 
   pointer-events: none;
 
+  z-index: 99999;
+
   &.menu-open {
     pointer-events: auto;
 

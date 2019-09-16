@@ -19,7 +19,7 @@ const UserCard = ({ userData }) => {
         <div className={styles.content}>
           <div className={styles.photo}>
             {photo ? (
-              <img src={photo} />
+              <img src={photo} alt="" />
             ) : (
               <NoPhotoIcon className={styles.photoStub} />
             )}
@@ -32,7 +32,9 @@ const UserCard = ({ userData }) => {
             <div className={styles.body}>
               <div className={styles.item}>
                 <span className={styles.label}>website</span>
-                <span className={styles.text}>{website}</span>
+                <a href={website} className={styles.text}>
+                  {website}
+                </a>
               </div>
               <div className={styles.item}>
                 <span className={styles.label}>company</span>
@@ -40,7 +42,9 @@ const UserCard = ({ userData }) => {
               </div>
               <div className={styles.item}>
                 <span className={styles.label}>email</span>
-                <span className={styles.text}>{email}</span>
+                <a href={`mailto:${email}`} className={styles.text}>
+                  {email}
+                </a>
               </div>
             </div>
           </div>
