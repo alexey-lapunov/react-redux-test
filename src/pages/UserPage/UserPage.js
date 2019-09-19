@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { onOpenModalPost } from './../../store/user/actions';
 import { featchUser, featchUserPosts } from './../../store/user/thunks';
 
 import UserCard from './../../components/UserCard';
@@ -12,6 +11,10 @@ import { Nav, NavItem } from './../../components/Nav';
 import styles from './styles.module.scss';
 
 class UserPage extends React.Component {
+  state = {
+    isModalOpen: false
+  };
+
   componentDidMount() {
     this.getData();
   }
@@ -23,13 +26,20 @@ class UserPage extends React.Component {
     featchUserPosts(match.params.userId);
   };
 
+  onOpenModal = () => {
+    this.setState({
+      isModalOpen: true
+    });
+  };
+
   render() {
     const {
       user: { data: userData },
-      posts: { data: userPosts, isModalOpen },
-      onOpenModalPost,
+      posts: { data: userPosts },
       match
     } = this.props;
+
+    const { isModalOpen } = this.state;
 
     return (
       <div className={styles.userPage}>
@@ -49,8 +59,8 @@ class UserPage extends React.Component {
             component={() => (
               <UserPosts
                 posts={userPosts}
-                isModalOpen={isModalOpen}
-                onModalOpen={onOpenModalPost}
+                onOpenModal={this.onOpenModal}
+                isOpenModal={isModalOpen}
               />
             )}
           />
@@ -78,8 +88,7 @@ const mapStateToProps = state => {
     posts: {
       data: state.user.posts.data,
       isFetching: state.user.posts.isFetching,
-      error: state.user.posts.isFetching,
-      isModalOpen: state.user.posts.isModalOpen
+      error: state.user.posts.isFetching
     }
   };
 };
@@ -87,8 +96,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     featchUser: id => dispatch(featchUser(id)),
-    featchUserPosts: id => dispatch(featchUserPosts(id)),
-    onOpenModalPost: bool => dispatch(onOpenModalPost(bool))
+    featchUserPosts: id => dispatch(featchUserPosts(id))
   };
 };
 

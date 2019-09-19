@@ -5,7 +5,6 @@ import { fetchUsersList } from '../../store/users/thunks';
 import UserTable from './../../components/UserTable';
 
 import styles from './styles.module.scss';
-
 class UsersPage extends React.Component {
   state = {
     usersList: []

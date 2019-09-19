@@ -5,7 +5,7 @@ import Modal from './../Modal/';
 
 import styles from './styles.module.scss';
 
-const UserPosts = ({ posts, isModalOpen, onModalOpen }) => {
+const UserPosts = ({ posts, isOpenModal, onOpenModal }) => {
   return (
     <>
       <div className={styles.posts}>
@@ -15,15 +15,13 @@ const UserPosts = ({ posts, isModalOpen, onModalOpen }) => {
               <PostCard
                 title={post.title}
                 desc={post.body}
-                onClick={() => onModalOpen(true)}
+                onClick={onOpenModal}
               />
             </div>
           ))}
         </div>
       </div>
-      <Modal isOpen={isModalOpen}>
-        <span>This Modal Window motherfucker!!!</span>
-      </Modal>
+      <Modal isOpen={isOpenModal}></Modal>
     </>
   );
 };
