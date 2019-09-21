@@ -1,8 +1,11 @@
+import { async } from 'q';
+
 const BASE_URL = 'http://jsonplaceholder.typicode.com';
 
 const getUsersUrl = () => `${BASE_URL}/users`;
 const getUserUrl = id => `${BASE_URL}/users/${id}`;
 const getPostsUrl = () => `${BASE_URL}/posts`;
+const getPostUrl = id => `${BASE_URL}/posts/${id}`;
 const getUserPostsUrl = id => `${BASE_URL}/posts?userId=${id}`;
 
 const getResourse = async url => {
@@ -33,6 +36,12 @@ export const getPosts = async () => {
   const posts = await getResourse(getPostsUrl());
 
   return posts;
+};
+
+export const getPost = async id => {
+  const post = await getResourse(getPostUrl(id));
+
+  return post;
 };
 
 export const getUserPosts = async id => {

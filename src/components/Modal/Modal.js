@@ -8,7 +8,10 @@ class Modal extends React.Component {
     isOpen: this.props.isOpen
   };
 
-  onClose = () => this.setState({ isOpen: false });
+  onClose = () => {
+    this.setState({ isOpen: false });
+    this.props.onClose();
+  };
 
   render() {
     const { children } = this.props;

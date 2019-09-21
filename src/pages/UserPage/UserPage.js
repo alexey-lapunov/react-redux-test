@@ -1,7 +1,11 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { featchUser, featchUserPosts } from './../../store/user/thunks';
+import {
+  featchUser,
+  featchUserPosts,
+  featchUserPost
+} from './../../store/user/thunks';
 
 import UserCard from './../../components/UserCard';
 import { UserPosts } from './../../components/UserPosts';
@@ -10,7 +14,7 @@ import { Nav, NavItem } from './../../components/Nav';
 
 import styles from './styles.module.scss';
 
-class UserPage extends React.Component {
+class UserPage extends React.PureComponent {
   state = {
     isModalOpen: false
   };
@@ -26,9 +30,17 @@ class UserPage extends React.Component {
     featchUserPosts(match.params.userId);
   };
 
-  onOpenModal = () => {
+  onOpenModalPost = id => {
     this.setState({
       isModalOpen: true
+    });
+
+    this.props.featchUserPost(id);
+  };
+
+  onCloseModalPost = () => {
+    this.setState({
+      isModalOpen: false
     });
   };
 
@@ -36,6 +48,7 @@ class UserPage extends React.Component {
     const {
       user: { data: userData },
       posts: { data: userPosts },
+      post: { data: userPost },
       match
     } = this.props;
 
@@ -59,7 +72,9 @@ class UserPage extends React.Component {
             component={() => (
               <UserPosts
                 posts={userPosts}
-                onOpenModal={this.onOpenModal}
+                post={userPost}
+                onOpenModalPost={this.onOpenModalPost}
+                onCloseModalPost={this.onCloseModalPost}
                 isOpenModal={isModalOpen}
               />
             )}
@@ -83,12 +98,17 @@ const mapStateToProps = state => {
     user: {
       data: state.user.person.data,
       isFetching: state.user.person.isFetching,
-      error: state.user.person.isFetching
+      error: state.user.person.error
     },
     posts: {
       data: state.user.posts.data,
       isFetching: state.user.posts.isFetching,
-      error: state.user.posts.isFetching
+      error: state.user.posts.error
+    },
+    post: {
+      data: state.user.post.data,
+      isFetching: state.user.post.isFetching,
+      error: state.user.post.error
     }
   };
 };
@@ -96,7 +116,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     featchUser: id => dispatch(featchUser(id)),
-    featchUserPosts: id => dispatch(featchUserPosts(id))
+    featchUserPosts: id => dispatch(featchUserPosts(id)),
+    featchUserPost: id => dispatch(featchUserPost(id))
   };
 };
 
