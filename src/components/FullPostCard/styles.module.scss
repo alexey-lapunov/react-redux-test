@@ -1,0 +1,10 @@
+.card {
+  background-color: $color-secondary;
+}
+
+.picture {
+  &-stub {
+    width: 50px;
+    height: 60px;
+  }
+}

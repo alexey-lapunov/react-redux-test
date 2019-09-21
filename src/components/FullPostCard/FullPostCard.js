@@ -1,10 +1,27 @@
 import React from 'react';
+import { ReactComponent as NoPhotoIcon } from './../../svg/noPhoto.svg';
 
 import styles from './styles.module.scss';
 
-const FullPostCard = ({ data }) => {
-  console.log(data);
-  return <div style={styles.card}>full post card</div>;
+const FullPostCard = ({ data, isLoading }) => {
+  if (isLoading) {
+    return <span>Loading....</span>;
+  }
+  return (
+    <div className={styles.card}>
+      <div className={styles.container}>
+        <h3 className={styles.title}>{data.title}</h3>
+        <span className={styles.dec}>{data.body}</span>
+        <div className={styles.picture}>
+          {data.img ? (
+            <img src={data.img} alt="" />
+          ) : (
+            <NoPhotoIcon className={styles.pictureStub} />
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default FullPostCard;

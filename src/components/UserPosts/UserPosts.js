@@ -29,7 +29,7 @@ const UserPosts = ({
         </div>
       </div>
       <Modal isOpen={isOpenModal} onClose={onCloseModalPost}>
-        <FullPostCard data={post} />
+        <FullPostCard data={post.data} isLoading={post.isFetching} />
       </Modal>
     </>
   );

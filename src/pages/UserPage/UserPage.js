@@ -14,9 +14,10 @@ import { Nav, NavItem } from './../../components/Nav';
 
 import styles from './styles.module.scss';
 
-class UserPage extends React.PureComponent {
+class UserPage extends React.Component {
   state = {
-    isModalOpen: false
+    isModalOpen: false,
+    isLoadingPost: false
   };
 
   componentDidMount() {
@@ -31,11 +32,12 @@ class UserPage extends React.PureComponent {
   };
 
   onOpenModalPost = id => {
+    const { featchUserPost } = this.props;
+    featchUserPost(id);
+
     this.setState({
       isModalOpen: true
     });
-
-    this.props.featchUserPost(id);
   };
 
   onCloseModalPost = () => {
@@ -48,7 +50,7 @@ class UserPage extends React.PureComponent {
     const {
       user: { data: userData },
       posts: { data: userPosts },
-      post: { data: userPost },
+      post,
       match
     } = this.props;
 
@@ -72,7 +74,7 @@ class UserPage extends React.PureComponent {
             component={() => (
               <UserPosts
                 posts={userPosts}
-                post={userPost}
+                post={post}
                 onOpenModalPost={this.onOpenModalPost}
                 onCloseModalPost={this.onCloseModalPost}
                 isOpenModal={isModalOpen}

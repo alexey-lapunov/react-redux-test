@@ -1,5 +1,3 @@
-import { async } from 'q';
-
 const BASE_URL = 'http://jsonplaceholder.typicode.com';
 
 const getUsersUrl = () => `${BASE_URL}/users`;
