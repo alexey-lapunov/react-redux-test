@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 const FullPostCard = ({ data, isLoading }) => {
   if (isLoading) {
-    return <span>Loading....</span>;
+    return <span>Loading...</span>;
   }
   return (
     <div className={styles.card}>

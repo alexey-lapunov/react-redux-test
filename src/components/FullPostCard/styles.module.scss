@@ -1,10 +1,31 @@
 .card {
+  width: 650px;
   background-color: $color-secondary;
 }
 
+.container {
+  padding: 40px;
+}
+
+.title {
+  font-size: 34px;
+  margin: 0 0 20px 0;
+}
+
 .picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 40px 0 0 0;
+
+  height: 400px;
+  background-color: $color-smooth;
+
   &-stub {
-    width: 50px;
-    height: 60px;
+    width: 200px;
+    height: 200px;
+
+    fill: $color-base;
   }
 }
