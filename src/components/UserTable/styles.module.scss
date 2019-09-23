@@ -1,0 +1,18 @@
+.arrow {
+  display: inline-block;
+
+  border: 5px solid transparent;
+  border-bottom-color: white;
+  margin: 0 0 3px 5px;
+  transform-origin: center bottom;
+
+  transition: transform .25s;
+
+  &-up {
+    transform: scale(1) rotate(180deg);
+  }
+
+  &-hidden {
+    transform: scale(0);
+  }
+}

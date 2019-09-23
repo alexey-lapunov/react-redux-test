@@ -1,13 +1,29 @@
 import React from 'react';
+import classnames from 'classnames';
 
 import { Table, Thead, Tbody, Row, Cell } from './../Table';
 
-const UserTable = ({ usersList, history }) => {
+import styles from './styles.module.scss';
+
+const UserTable = ({
+  usersList,
+  history,
+  onSortByName,
+  directionSortByName
+}) => {
   return (
     <Table>
       <Thead>
         <Row>
-          <Cell>Name</Cell>
+          <Cell onClick={onSortByName}>
+            sort by Name
+            <span
+              className={classnames(styles.arrow, {
+                [styles.arrowUp]: directionSortByName === 0,
+                [styles.arrowHidden]: directionSortByName === -1
+              })}
+            />
+          </Cell>
           <Cell>User Name</Cell>
           <Cell>City</Cell>
           <Cell>Company</Cell>
