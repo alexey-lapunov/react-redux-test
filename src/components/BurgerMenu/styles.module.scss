@@ -18,7 +18,7 @@
     }
 
     .backdrop {
-      opacity: .2;
+      background-color: rgba($color-graybase, .7);
     }
   }
 }
@@ -30,9 +30,7 @@
   right: 0;
   bottom: 0;
 
-  background-color: white;
-  opacity: 0;
-  transition: opacity .3s;
+  transition: background-color .3s;
 }
 
 .box {

@@ -1,15 +1,17 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
+
 import {
   featchUser,
   featchUserPosts,
-  featchUserPost
+  featchUserPost,
+  featchUserAlbums
 } from './../../store/user/thunks';
 
 import UserCard from './../../components/UserCard';
 import { UserPosts } from './../../components/UserPosts';
-import { Route } from 'react-router-dom';
 import { Nav, NavItem } from './../../components/Nav';
 
 import styles from './styles.module.scss';
@@ -17,7 +19,8 @@ import styles from './styles.module.scss';
 class UserPage extends React.Component {
   state = {
     isModalOpen: false,
-    isLoadingPost: false
+    isLoadingPost: false,
+    albums: []
   };
 
   componentDidMount() {
@@ -29,6 +32,12 @@ class UserPage extends React.Component {
 
     featchUser(match.params.userId);
     featchUserPosts(match.params.userId);
+  };
+
+  getAlbums = () => {
+    const { featchUserAlbums, match } = this.props;
+
+    featchUserAlbums(match.params.userId).then(res => this.setState({albums: res}));
   };
 
   onOpenModalPost = id => {
@@ -64,7 +73,7 @@ class UserPage extends React.Component {
         <div className={styles.nav}>
           <Nav>
             <NavItem to={`${match.url}/posts`} text="Posts" />
-            <NavItem to={`${match.url}/photos`} text="Photos" />
+            <NavItem to={`${match.url}/photos`} text="Photo Albums" />
             <NavItem to={`${match.url}/todos`} text="Todos" />
           </Nav>
         </div>
@@ -111,6 +120,11 @@ const mapStateToProps = state => {
       data: state.user.post.data,
       isFetching: state.user.post.isFetching,
       error: state.user.post.error
+    },
+    photoAlbums: {
+      data: state.user.photoAlbums.data,
+      isFetching: state.user.photoAlbums.isFetching,
+      error: state.user.photoAlbums.error
     }
   };
 };
@@ -119,7 +133,8 @@ const mapDispatchToProps = dispatch => {
   return {
     featchUser: id => dispatch(featchUser(id)),
     featchUserPosts: id => dispatch(featchUserPosts(id)),
-    featchUserPost: id => dispatch(featchUserPost(id))
+    featchUserPost: id => dispatch(featchUserPost(id)),
+    featchUserAlbums: id => dispatch(featchUserAlbums(id))
   };
 };
 

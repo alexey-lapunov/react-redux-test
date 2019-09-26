@@ -5,6 +5,10 @@ const getUserUrl = id => `${BASE_URL}/users/${id}`;
 const getPostsUrl = () => `${BASE_URL}/posts`;
 const getPostUrl = id => `${BASE_URL}/posts/${id}`;
 const getUserPostsUrl = id => `${BASE_URL}/posts?userId=${id}`;
+//const getAlbums = () => `${BASE_URL}/albums`;
+const getUserAlbumsUrl = id => `${BASE_URL}/albums?userId=${id}`;
+//const getPhotos = () => `${BASE_URL}/photos`;
+//const getUserPhotoUrl = id => `${BASE_URL}/photos?userId=${id}`;
 
 const getResourse = async url => {
   const response = await fetch(url);
@@ -46,4 +50,10 @@ export const getUserPosts = async id => {
   const posts = await getResourse(getUserPostsUrl(id));
 
   return posts;
+};
+
+export const getUserAlbums = async id => {
+  const albums = await getResourse(getUserAlbumsUrl(id));
+
+  return albums;
 };

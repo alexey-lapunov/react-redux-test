@@ -1,4 +1,9 @@
-import { getUser, getUserPosts, getPost } from '../../api/jsonplh';
+import {
+  getUser,
+  getUserPosts,
+  getPost,
+  getUserAlbums
+} from '../../api/jsonplh';
 import {
   featchPerson,
   featchPersonError,
@@ -8,7 +13,10 @@ import {
   featchPersonPostsSuccess,
   featchPersonPost,
   featchPersonPostError,
-  featchPersonPostSuccess
+  featchPersonPostSuccess,
+  featchPersonAlbums,
+  featchPersonAlbumsError,
+  featchPersonAlbumsSuccess
 } from './actions';
 
 const featchUser = id => {
@@ -49,10 +57,24 @@ const featchUserPost = id => {
 
       dispatch(featchPersonPost(false));
       dispatch(featchPersonPostSuccess(post));
-    } catch (errro) {
+    } catch (error) {
       dispatch(featchPersonPostError(true));
     }
   };
 };
 
-export { featchUser, featchUserPosts, featchUserPost };
+const featchUserAlbums = id => {
+  return async dispatch => {
+    try {
+      dispatch(featchPersonAlbums(true));
+      const albums = await getUserAlbums(id);
+
+      dispatch(featchPersonAlbums(false));
+      dispatch(featchPersonAlbumsSuccess(albums));
+    } catch (error) {
+      dispatch(featchPersonAlbumsError(true));
+    }
+  };
+};
+
+export { featchUser, featchUserPosts, featchUserPost, featchUserAlbums };

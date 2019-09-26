@@ -28,10 +28,10 @@ class UsersPage extends React.Component {
       switch (directionSortByName) {
         case -1:
           newDirectionSortByName = 0;
-          return a.name > b.name ? 1 : -1;
+          return a.name < b.name ? 1 : -1;
         case 0:
           newDirectionSortByName = 1;
-          return a.name < b.name ? 1 : -1;
+          return a.name > b.name ? 1 : -1;
         default:
           newDirectionSortByName = -1;
           return Math.random() - 0.5;
