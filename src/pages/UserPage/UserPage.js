@@ -13,57 +13,26 @@ import {
 import UserCard from './../../components/UserCard';
 import { UserPosts } from './../../components/UserPosts';
 import { Nav, NavItem } from './../../components/Nav';
+import PhotoAlbums from './../../components/PhotoAlbums';
 
 import styles from './styles.module.scss';
 
 class UserPage extends React.Component {
-  state = {
-    isModalOpen: false,
-    isLoadingPost: false,
-    albums: []
-  };
-
   componentDidMount() {
     this.getData();
   }
 
   getData = () => {
-    const { featchUser, featchUserPosts, match } = this.props;
+    const { featchUser, match } = this.props;
 
     featchUser(match.params.userId);
-    featchUserPosts(match.params.userId);
-  };
-
-  getAlbums = () => {
-    const { featchUserAlbums, match } = this.props;
-
-    featchUserAlbums(match.params.userId).then(res => this.setState({albums: res}));
-  };
-
-  onOpenModalPost = id => {
-    const { featchUserPost } = this.props;
-    featchUserPost(id);
-
-    this.setState({
-      isModalOpen: true
-    });
-  };
-
-  onCloseModalPost = () => {
-    this.setState({
-      isModalOpen: false
-    });
   };
 
   render() {
     const {
       user: { data: userData },
-      posts: { data: userPosts },
-      post,
       match
     } = this.props;
-
-    const { isModalOpen } = this.state;
 
     return (
       <div className={styles.userPage}>
@@ -80,19 +49,11 @@ class UserPage extends React.Component {
         <div className={styles.routers}>
           <Route
             path={`${match.url}/posts`}
-            component={() => (
-              <UserPosts
-                posts={userPosts}
-                post={post}
-                onOpenModalPost={this.onOpenModalPost}
-                onCloseModalPost={this.onCloseModalPost}
-                isOpenModal={isModalOpen}
-              />
-            )}
+            component={() => <div>Posts</div>}
           />
           <Route
             path={`${match.url}/photos`}
-            component={() => <span>photo</span>}
+            component={() => <div>Photo Albums</div>}
           />
           <Route
             path={`${match.url}/todos`}
@@ -110,31 +71,13 @@ const mapStateToProps = state => {
       data: state.user.person.data,
       isFetching: state.user.person.isFetching,
       error: state.user.person.error
-    },
-    posts: {
-      data: state.user.posts.data,
-      isFetching: state.user.posts.isFetching,
-      error: state.user.posts.error
-    },
-    post: {
-      data: state.user.post.data,
-      isFetching: state.user.post.isFetching,
-      error: state.user.post.error
-    },
-    photoAlbums: {
-      data: state.user.photoAlbums.data,
-      isFetching: state.user.photoAlbums.isFetching,
-      error: state.user.photoAlbums.error
     }
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    featchUser: id => dispatch(featchUser(id)),
-    featchUserPosts: id => dispatch(featchUserPosts(id)),
-    featchUserPost: id => dispatch(featchUserPost(id)),
-    featchUserAlbums: id => dispatch(featchUserAlbums(id))
+    featchUser: id => dispatch(featchUser(id))
   };
 };
 
