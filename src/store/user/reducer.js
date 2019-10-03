@@ -22,7 +22,7 @@ const DEFAULT_STATE = {
   posts: {
     data: [],
     isFetching: false,
-    error: null
+    error: null 
   },
   post: {
     data: {},

@@ -43,6 +43,8 @@ const featchUserPosts = id => {
 
       dispatch(featchPersonPosts(false));
       dispatch(featchPersonPostsSuccess(posts));
+
+      return posts;
     } catch (error) {
       dispatch(featchPersonPostsError('Егор User Posts!'));
     }

@@ -84,19 +84,15 @@ class UsersPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    usersList: state.users.people,
-    error: state.users.error,
-    isFetching: state.users.isFetching
-  };
-};
+const mapStateToProps = state => ({
+  usersList: state.users.people,
+  error: state.users.error,
+  isFetching: state.users.isFetching
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchUsersList: () => dispatch(fetchUsersList())
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  fetchUsersList: () => dispatch(fetchUsersList())
+});
 
 export default connect(
   mapStateToProps,

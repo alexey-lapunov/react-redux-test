@@ -3,17 +3,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 
-import {
-  featchUser,
-  featchUserPosts,
-  featchUserPost,
-  featchUserAlbums
-} from './../../store/user/thunks';
+import { featchUser } from './../../store/user/thunks';
 
+import UserPosts from './../UserPosts';
 import UserCard from './../../components/UserCard';
-import { UserPosts } from './../../components/UserPosts';
 import { Nav, NavItem } from './../../components/Nav';
-import PhotoAlbums from './../../components/PhotoAlbums';
 
 import styles from './styles.module.scss';
 
@@ -47,10 +41,7 @@ class UserPage extends React.Component {
           </Nav>
         </div>
         <div className={styles.routers}>
-          <Route
-            path={`${match.url}/posts`}
-            component={() => <div>Posts</div>}
-          />
+          <Route path={`${match.url}/posts`} component={() => <UserPosts />} />
           <Route
             path={`${match.url}/photos`}
             component={() => <div>Photo Albums</div>}
