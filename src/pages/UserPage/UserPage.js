@@ -41,7 +41,10 @@ class UserPage extends React.Component {
           </Nav>
         </div>
         <div className={styles.routers}>
-          <Route path={`${match.url}/posts`} component={() => <UserPosts />} />
+          <Route
+            path={`${match.url}/posts`}
+            render={() => <UserPosts userId={match.params.userId} />}
+          />
           <Route
             path={`${match.url}/photos`}
             component={() => <div>Photo Albums</div>}

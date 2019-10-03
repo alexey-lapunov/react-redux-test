@@ -3,10 +3,7 @@ import { ReactComponent as NoPhotoIcon } from './../../svg/noPhoto.svg';
 
 import styles from './styles.module.scss';
 
-const FullPostCard = ({ data, isLoading }) => {
-  if (isLoading) {
-    return <span>Loading...</span>;
-  }
+const FullPostCard = ({ data }) => {
   return (
     <div className={styles.card}>
       <div className={styles.container}>
