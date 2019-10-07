@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import { featchUser } from './../../store/user/thunks';
 
 import UserPosts from './../UserPosts';
+import UserAlbums from './../UserAlbums';
 import UserCard from './../../components/UserCard';
 import { Nav, NavItem } from './../../components/Nav';
 
@@ -47,7 +48,7 @@ class UserPage extends React.Component {
           />
           <Route
             path={`${match.url}/photos`}
-            component={() => <div>Photo Albums</div>}
+            render={() => <UserAlbums userId={match.params.userId} />}
           />
           <Route
             path={`${match.url}/todos`}

@@ -59,14 +59,14 @@ class UserPosts extends React.Component {
   render() {
     const { isOpenModal } = this.state;
     const {
-      post: { data: postData }
+      post: { data: postData, isFetching: isFetchingData }
     } = this.props;
 
     return (
       <>
         <div>{this.renderFunction()}</div>
         <Modal isOpen={isOpenModal} onClose={this.onModalClose}>
-          <FullPostCard data={postData} />
+          <FullPostCard data={postData} loading={isFetchingData} />
         </Modal>
       </>
     );

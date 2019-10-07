@@ -71,6 +71,8 @@ const featchUserAlbums = id => {
       dispatch(featchPersonAlbums(true));
       const albums = await getUserAlbums(id);
 
+      console.log(albums);
+
       dispatch(featchPersonAlbums(false));
       dispatch(featchPersonAlbumsSuccess(albums));
     } catch (error) {

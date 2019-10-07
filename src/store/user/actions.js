@@ -96,6 +96,6 @@ export const featchPersonAlbumsError = bool => {
 export const featchPersonAlbumsSuccess = albums => {
   return {
     type: FEATCH_PERSON_ALBUMS_SUCCESS,
-    data: albums
+    albums
   };
 };
