@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { featchUserAlbums } from './../../store/user/thunks';
 
+import PhotoAlbum from './../../components/PhotoAlbum';
+
 import styles from './styles.module.scss';
 
 class UserAlbums extends React.Component {
@@ -13,13 +15,17 @@ class UserAlbums extends React.Component {
   render() {
     const { data, isLoading } = this.props;
     return (
-      <div style={styles.albums}>
+      <div className={styles.albums}>
         {isLoading ? (
           <span>Loading...</span>
         ) : (
-          <div styles={styles.grid}>
+          <div className={styles.grid}>
             {data.map(item => {
-              return <div styles={styles.col}>{item.title}</div>;
+              return (
+                <div className={styles.col}>
+                  <PhotoAlbum key={item.id} title={item.title} />
+                </div>
+              );
             })}
           </div>
         )}

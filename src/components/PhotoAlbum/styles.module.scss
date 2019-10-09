@@ -1,0 +1,27 @@
+.photo-album {
+  position: relative;
+  height: 250px;
+
+  background-color: $color-secondary;
+  border-radius: 5px;
+}
+
+.title {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+
+  color: $color-base;
+}
+
+.stub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 70px;
+  height: 70px;
+  transform: translate(-50%, -50%);
+  
+  fill: $color-graybase;
+}
