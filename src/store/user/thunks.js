@@ -2,7 +2,8 @@ import {
   getUser,
   getUserPosts,
   getPost,
-  getUserAlbums
+  getUserAlbums,
+  getAlbomPhotos
 } from '../../api/jsonplh';
 import {
   featchPerson,
@@ -16,7 +17,10 @@ import {
   featchPersonPostSuccess,
   featchPersonAlbums,
   featchPersonAlbumsError,
-  featchPersonAlbumsSuccess
+  featchPersonAlbumsSuccess,
+  featchAlbomPhotos,
+  featchAlbomPhotosError,
+  featchAlbomPhotosSuccess
 } from './actions';
 
 const featchUser = id => {
@@ -71,8 +75,6 @@ const featchUserAlbums = id => {
       dispatch(featchPersonAlbums(true));
       const albums = await getUserAlbums(id);
 
-      console.log(albums);
-
       dispatch(featchPersonAlbums(false));
       dispatch(featchPersonAlbumsSuccess(albums));
     } catch (error) {
@@ -81,4 +83,24 @@ const featchUserAlbums = id => {
   };
 };
 
-export { featchUser, featchUserPosts, featchUserPost, featchUserAlbums };
+const featchUserAlbomPhotos = id => {
+  return async dispatch => {
+    try {
+      dispatch(featchAlbomPhotos(true));
+      const photos = await getAlbomPhotos(id);
+
+      dispatch(featchAlbomPhotos(false));
+      dispatch(featchAlbomPhotosSuccess(photos));
+    } catch (error) {
+      dispatch(featchAlbomPhotosError(true));
+    }
+  };
+};
+
+export {
+  featchUser,
+  featchUserPosts,
+  featchUserPost,
+  featchUserAlbums,
+  featchUserAlbomPhotos
+};

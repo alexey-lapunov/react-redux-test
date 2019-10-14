@@ -10,7 +10,10 @@ import {
   FEATCH_PERSON_POST_SUCCESS,
   FEATCH_PERSON_ALBUMS,
   FEATCH_PERSON_ALBUMS_FAIL,
-  FEATCH_PERSON_ALBUMS_SUCCESS
+  FEATCH_PERSON_ALBUMS_SUCCESS,
+  FEATCH_ALBUM_PHOTOS,
+  FEATCH_ALBUM_PHOTOS_FAIL,
+  FEATCH_ALBUM_PHOTOS_SUCCESS
 } from './constants';
 
 export const featchPerson = bool => {
@@ -97,5 +100,27 @@ export const featchPersonAlbumsSuccess = albums => {
   return {
     type: FEATCH_PERSON_ALBUMS_SUCCESS,
     albums
+  };
+};
+
+// ACTIONS ALBOM PHOTOS
+export const featchAlbomPhotos = bool => {
+  return {
+    type: FEATCH_ALBUM_PHOTOS,
+    bool
+  };
+};
+
+export const featchAlbomPhotosError = bool => {
+  return {
+    type: FEATCH_ALBUM_PHOTOS_FAIL,
+    bool
+  };
+};
+
+export const featchAlbomPhotosSuccess = photos => {
+  return {
+    type: FEATCH_ALBUM_PHOTOS_SUCCESS,
+    photos
   };
 };

@@ -10,7 +10,10 @@ import {
   FEATCH_PERSON_POST_SUCCESS,
   FEATCH_PERSON_ALBUMS,
   FEATCH_PERSON_ALBUMS_FAIL,
-  FEATCH_PERSON_ALBUMS_SUCCESS
+  FEATCH_PERSON_ALBUMS_SUCCESS,
+  FEATCH_ALBUM_PHOTOS,
+  FEATCH_ALBUM_PHOTOS_FAIL,
+  FEATCH_ALBUM_PHOTOS_SUCCESS
 } from './constants';
 
 const DEFAULT_STATE = {
@@ -22,7 +25,7 @@ const DEFAULT_STATE = {
   posts: {
     data: [],
     isFetching: false,
-    error: null 
+    error: null
   },
   post: {
     data: {},
@@ -30,6 +33,11 @@ const DEFAULT_STATE = {
     error: null
   },
   photoAlbums: {
+    data: [],
+    isFetching: false,
+    error: null
+  },
+  photos: {
     data: [],
     isFetching: false,
     error: null
@@ -132,6 +140,30 @@ const personReducer = (state = DEFAULT_STATE, action) => {
         photoAlbums: {
           ...state.photoAlbums,
           data: action.albums
+        }
+      };
+    case FEATCH_ALBUM_PHOTOS:
+      return {
+        ...state,
+        photos: {
+          ...state.photos,
+          isFetching: action.bool
+        }
+      };
+    case FEATCH_ALBUM_PHOTOS_FAIL:
+      return {
+        ...state,
+        photos: {
+          ...state.photos,
+          error: action.bool
+        }
+      };
+    case FEATCH_ALBUM_PHOTOS_SUCCESS:
+      return {
+        ...state,
+        photos: {
+          ...state.photos,
+          data: action.photos
         }
       };
     default:

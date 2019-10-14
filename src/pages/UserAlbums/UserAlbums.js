@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { featchUserAlbums } from './../../store/user/thunks';
+import {
+  featchUserAlbums,
+  featchUserAlbomPhotos
+} from './../../store/user/thunks';
 
 import PhotoAlbum from './../../components/PhotoAlbum';
 
@@ -13,7 +16,7 @@ class UserAlbums extends React.Component {
   }
 
   render() {
-    const { data, isLoading } = this.props;
+    const { data, isLoading, featchUserAlbomPhotos } = this.props;
     return (
       <div className={styles.albums}>
         {isLoading ? (
@@ -22,8 +25,12 @@ class UserAlbums extends React.Component {
           <div className={styles.grid}>
             {data.map(item => {
               return (
-                <div className={styles.col}>
-                  <PhotoAlbum key={item.id} title={item.title} />
+                <div
+                  key={item.id}
+                  className={styles.col}
+                  onClick={() => featchUserAlbomPhotos(1)}
+                >
+                  <PhotoAlbum title={item.title} />
                 </div>
               );
             })}
@@ -43,7 +50,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  featchUserAlbums: id => dispatch(featchUserAlbums(id))
+  featchUserAlbums: id => dispatch(featchUserAlbums(id)),
+  featchUserAlbomPhotos: id => dispatch(featchUserAlbomPhotos(id))
 });
 
 export default connect(
