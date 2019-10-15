@@ -8,7 +8,7 @@ const getUserPostsUrl = id => `${BASE_URL}/posts?userId=${id}`;
 //const getAlbums = () => `${BASE_URL}/albums`;
 const getUserAlbumsUrl = id => `${BASE_URL}/albums?userId=${id}`;
 //const getPhotos = () => `${BASE_URL}/photos`;
-const getAlbomPhotosUrl = id => `${BASE_URL}/photos?albomId=${id}`;
+const getAlbomPhotosUrl = id => `${BASE_URL}/photos?albumId=${id}`;
 
 const getResourse = async url => {
   const response = await fetch(url);

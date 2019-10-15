@@ -6,46 +6,75 @@ import {
 } from './../../store/user/thunks';
 
 import PhotoAlbum from './../../components/PhotoAlbum';
+import PhotoSlider from './../../components/PhotoSlider';
+import Modal from './../../components/Modal';
 
 import styles from './styles.module.scss';
 
 class UserAlbums extends React.Component {
+  state = {
+    isOpenModal: false
+  };
+
   componentDidMount() {
     const { userId, featchUserAlbums } = this.props;
     featchUserAlbums(userId);
   }
 
+  onModalOpen = () => {
+    const { featchUserAlbomPhotos } = this.props;
+    featchUserAlbomPhotos(1);
+    this.setState({ isOpenModal: true });
+  };
+
+  onModalClose = () => {
+    this.setState({ isOpenModal: false });
+  };
+
   render() {
-    const { data, isLoading, featchUserAlbomPhotos } = this.props;
+    const { isOpenModal } = this.state;
+    const { albumData, albumIsLoading, photosData } = this.props;
     return (
-      <div className={styles.albums}>
-        {isLoading ? (
-          <span>Loading...</span>
-        ) : (
-          <div className={styles.grid}>
-            {data.map(item => {
-              return (
-                <div
-                  key={item.id}
-                  className={styles.col}
-                  onClick={() => featchUserAlbomPhotos(1)}
-                >
-                  <PhotoAlbum title={item.title} />
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
+      <>
+        <div className={styles.albums}>
+          {albumIsLoading ? (
+            <span>Loading...</span>
+          ) : (
+            <div className={styles.grid}>
+              {albumData.map(item => {
+                return (
+                  <div
+                    key={item.id}
+                    className={styles.col}
+                    onClick={this.onModalOpen}
+                  >
+                    <PhotoAlbum title={item.title} />
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+        <Modal
+          ref={this.swiper}
+          isOpen={isOpenModal}
+          onClose={this.onModalClose}
+        >
+          <PhotoSlider photos={photosData} />
+        </Modal>
+      </>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    data: state.user.photoAlbums.data,
-    isLoading: state.user.photoAlbums.isLoading,
-    error: state.user.photoAlbums.error
+    albumData: state.user.photoAlbums.data,
+    albumIsLoading: state.user.photoAlbums.isFetching,
+    albumError: state.user.photoAlbums.error,
+    photosData: state.user.photos.data,
+    photosIsLoading: state.user.photos.isFetching,
+    photosError: state.user.photos.error
   };
 };
 
