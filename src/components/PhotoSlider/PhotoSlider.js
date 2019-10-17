@@ -7,13 +7,17 @@ import styles from './styles.module.scss';
 
 const SwiperSlider = ({ photos = [] }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.box}>
       <div className={styles.content}>
         <div className={styles.slider}>
           <Swiper>
             {photos.map(photo => (
               <div key={photo.id} className={styles.slide}>
-                <img src={photo.url} alt={photo.title} />
+                <img
+                  className={styles.picture}
+                  src={photo.url}
+                  alt={photo.title}
+                />
               </div>
             ))}
           </Swiper>
