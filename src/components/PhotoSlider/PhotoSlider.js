@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 
 import Swiper from 'react-id-swiper';
@@ -8,6 +8,15 @@ import styles from './styles.module.scss';
 
 const SwiperSlider = ({ photos }) => {
   const [swiper, updateSwiper] = useState(null);
+  const [currentIndex, updateCurrentIndex] = useState(null);
+
+  useEffect(() => {
+    if (swiper !== null) {
+      swiper.on('slideChange', () => {
+        updateCurrentIndex(swiper.activeIndex);
+      });
+    }
+  });
 
   const goNext = () => {
     if (swiper !== null) {
@@ -26,6 +35,23 @@ const SwiperSlider = ({ photos }) => {
       <div className={styles.content}>
         {photos.length ? (
           <div className={styles.slider}>
+            <Swiper getSwiper={updateSwiper}>
+              {photos.map(photo => (
+                <div key={photo.id} data-id={photo.id} className={styles.slide}>
+                  <img
+                    className={styles.picture}
+                    src={photo.url}
+                    alt={photo.title}
+                  />
+                </div>
+              ))}
+            </Swiper>
+            <span className={styles.title}>
+              <em>Title: </em>
+              {!!photos[currentIndex]
+                ? photos[currentIndex].title
+                : photos[0].title}
+            </span>
             <button
               className={classnames(styles.button, styles.buttonPrev)}
               onClick={goPrev}
@@ -38,17 +64,6 @@ const SwiperSlider = ({ photos }) => {
             >
               Next
             </button>
-            <Swiper getSwiper={updateSwiper}>
-              {photos.map(photo => (
-                <div key={photo.id} className={styles.slide}>
-                  <img
-                    className={styles.picture}
-                    src={photo.url}
-                    alt={photo.title}
-                  />
-                </div>
-              ))}
-            </Swiper>
           </div>
         ) : (
           <span>Loading...</span>
