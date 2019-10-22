@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import {
   featchUserAlbums,
   featchUserAlbomPhotos
-} from './../../store/user/thunks';
+} from '../../store/user/thunks';
 
-import PhotoAlbum from './../../components/PhotoAlbum';
-import PhotoSlider from './../../components/PhotoSlider';
-import Modal from './../../components/Modal';
+import PhotoAlbum from '../../components/PhotoAlbum';
+import PhotoSlider from '../../components/PhotoSlider';
+import Modal from '../../components/Modal';
 
 import styles from './styles.module.scss';
 
-class UserAlbums extends React.Component {
+class UserAlbumsPage extends React.Component {
   state = {
     isOpenModal: false
   };
@@ -67,16 +67,14 @@ class UserAlbums extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    albumData: state.user.photoAlbums.data,
-    albumIsLoading: state.user.photoAlbums.isFetching,
-    albumError: state.user.photoAlbums.error,
-    photosData: state.user.photos.data,
-    photosIsLoading: state.user.photos.isFetching,
-    photosError: state.user.photos.error
-  };
-};
+const mapStateToProps = state => ({
+  albumData: state.user.photoAlbums.data,
+  albumIsLoading: state.user.photoAlbums.isFetching,
+  albumError: state.user.photoAlbums.error,
+  photosData: state.user.photos.data,
+  photosIsLoading: state.user.photos.isFetching,
+  photosError: state.user.photos.error
+});
 
 const mapDispatchToProps = dispatch => ({
   featchUserAlbums: id => dispatch(featchUserAlbums(id)),
@@ -86,4 +84,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserAlbums);
+)(UserAlbumsPage);

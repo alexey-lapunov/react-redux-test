@@ -3,7 +3,8 @@ import {
   getUserPosts,
   getPost,
   getUserAlbums,
-  getAlbomPhotos
+  getAlbomPhotos,
+  getUserTodos
 } from '../../api/jsonplh';
 import {
   featchPerson,
@@ -20,7 +21,10 @@ import {
   featchPersonAlbumsSuccess,
   featchAlbomPhotos,
   featchAlbomPhotosError,
-  featchAlbomPhotosSuccess
+  featchAlbomPhotosSuccess,
+  featchPersonTodos,
+  featchPersonTodosError,
+  featchPersonTodosSuccess
 } from './actions';
 
 const featchUser = id => {
@@ -97,10 +101,25 @@ const featchUserAlbomPhotos = id => {
   };
 };
 
+const featchUserTodos = id => {
+  return async dispatch => {
+    try {
+      dispatch(featchPersonTodos(true));
+      const todos = await getUserTodos(id);
+
+      dispatch(featchPersonTodos(false));
+      dispatch(featchPersonTodosSuccess(todos));
+    } catch (error) {
+      dispatch(featchPersonTodosError(true));
+    }
+  };
+};
+
 export {
   featchUser,
   featchUserPosts,
   featchUserPost,
   featchUserAlbums,
-  featchUserAlbomPhotos
+  featchUserAlbomPhotos,
+  featchUserTodos
 };

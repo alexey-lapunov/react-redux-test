@@ -5,8 +5,9 @@ import { Route } from 'react-router-dom';
 
 import { featchUser } from './../../store/user/thunks';
 
-import UserPosts from './../UserPosts';
-import UserAlbums from './../UserAlbums';
+import UserPosts from '../UserPostsPage';
+import UserAlbums from '../UserAlbumsPage';
+import UserTodosPage from './../UserTodosPage';
 import UserCard from './../../components/UserCard';
 import { Nav, NavItem } from './../../components/Nav';
 
@@ -52,7 +53,7 @@ class UserPage extends React.Component {
           />
           <Route
             path={`${match.url}/todos`}
-            component={() => <span>todos</span>}
+            render={() => <UserTodosPage userId={match.params.userId} />}
           />
         </div>
       </div>

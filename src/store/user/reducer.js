@@ -13,7 +13,10 @@ import {
   FEATCH_PERSON_ALBUMS_SUCCESS,
   FEATCH_ALBUM_PHOTOS,
   FEATCH_ALBUM_PHOTOS_FAIL,
-  FEATCH_ALBUM_PHOTOS_SUCCESS
+  FEATCH_ALBUM_PHOTOS_SUCCESS,
+  FEATCH_PERSON_TODOS,
+  FEATCH_PERSON_TODOS_FAIL,
+  FEATCH_PERSON_TODOS_SUCCESS
 } from './constants';
 
 const DEFAULT_STATE = {
@@ -38,6 +41,11 @@ const DEFAULT_STATE = {
     error: null
   },
   photos: {
+    data: [],
+    isFetching: false,
+    error: null
+  },
+  todos: {
     data: [],
     isFetching: false,
     error: null
@@ -164,6 +172,30 @@ const personReducer = (state = DEFAULT_STATE, action) => {
         photos: {
           ...state.photos,
           data: action.photos
+        }
+      };
+    case FEATCH_PERSON_TODOS:
+      return {
+        ...state,
+        todos: {
+          ...state.todos,
+          isFetching: action.bool
+        }
+      };
+    case FEATCH_PERSON_TODOS_FAIL:
+      return {
+        ...state,
+        todos: {
+          ...state.todos,
+          error: action.bool
+        }
+      };
+    case FEATCH_PERSON_TODOS_SUCCESS:
+      return {
+        ...state,
+        todos: {
+          ...state.todos,
+          data: action.todos
         }
       };
     default:

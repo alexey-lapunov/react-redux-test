@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { featchUserPosts, featchUserPost } from './../../store/user/thunks';
+import { featchUserPosts, featchUserPost } from '../../store/user/thunks';
 
-import PostList from './../../components/PostList';
-import FullPostCard from './../../components/FullPostCard';
-import Modal from './../../components/Modal';
+import PostList from '../../components/PostList';
+import FullPostCard from '../../components/FullPostCard';
+import Modal from '../../components/Modal';
 
-class UserPosts extends React.Component {
+class UserPostsPage extends React.Component {
   state = {
     isOpenModal: false
   };
@@ -96,4 +96,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserPosts);
+)(UserPostsPage);
