@@ -2,6 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { featchUserTodos } from './../../store/user/thunks';
+import TodoTable from './../../components/TodoTable';
 
 import styles from './styles.module.scss';
 
@@ -11,13 +12,13 @@ class UserTodosPage extends React.Component {
   }
 
   render() {
+    const {
+      todos: { data, isFetching }
+    } = this.props;
+
     return (
       <div className={styles.todosPage}>
-        {this.props.todos.isFetching ? (
-          <span>Loading...</span>
-        ) : (
-          this.props.todos.data.map(todo => <span>{todo.title}</span>)
-        )}
+        {isFetching ? <span>Loading...</span> : <TodoTable data={data} />}
       </div>
     );
   }
