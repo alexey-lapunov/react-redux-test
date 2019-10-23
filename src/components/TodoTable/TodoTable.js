@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 
 class TodoTable extends React.Component {
   state = {
-    data: this.props.data || [],
+    data: this.props.data,
     sortByCompletedDirection: true
   };
 
