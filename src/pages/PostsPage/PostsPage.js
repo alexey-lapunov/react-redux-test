@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { featchPostsThunk } from './../../store/posts/thunks';
+import { featchPostsThunk, featchPostThunk } from './../../store/posts/thunks';
 
 import PostList from './../../components/PostList';
+import FullPostCard from './../../components/FullPostCard';
 import Modal from './../../components/Modal';
 
 class PostsPage extends React.Component {
@@ -15,7 +16,8 @@ class PostsPage extends React.Component {
   }
 
   setActivePosts = id => {
-    console.log(id);
+    this.onModalOpen();
+    this.props.featchPostThunk(id);
   };
 
   onModalOpen = () => {
@@ -30,7 +32,7 @@ class PostsPage extends React.Component {
     const { isOpenModal } = this.state;
     const {
       postsList: { data: postsData, isFetching: postsIsFetching },
-      activePosts
+      activePost: { data: activePostData, isFetching: activePostIsFetching }
     } = this.props;
     return (
       <>
@@ -42,7 +44,7 @@ class PostsPage extends React.Component {
           )}
         </div>
         <Modal isOpen={isOpenModal} onClose={this.onModalClose}>
-          {/* <FullPostCard data={postData} loading={isFetchingData} /> */}
+          <FullPostCard data={activePostData} loading={activePostIsFetching} />
         </Modal>
       </>
     );
@@ -55,11 +57,16 @@ const mapStateToProps = state => ({
     isFetching: state.posts.postsList.isFetching,
     error: state.posts.postsList.error
   },
-  activePost: {}
+  activePost: {
+    data: state.posts.activePost.data,
+    isFetching: state.posts.activePost.isFetching,
+    error: state.posts.activePost.error
+  }
 });
 
 const mapDispatchToProps = dispatch => ({
-  featchPostsThunk: () => dispatch(featchPostsThunk())
+  featchPostsThunk: () => dispatch(featchPostsThunk()),
+  featchPostThunk: id => dispatch(featchPostThunk(id))
 });
 
 export default connect(

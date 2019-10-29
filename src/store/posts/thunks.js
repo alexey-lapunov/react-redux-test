@@ -1,5 +1,12 @@
-import { getPosts } from './../../api/jsonplh';
-import { featchPosts, featchPostError, featchPostSuccess } from './actions';
+import { getPost, getPosts } from './../../api/jsonplh';
+import {
+  featchPosts,
+  featchPostsError,
+  featchPostsSuccess,
+  featchPost,
+  featchPostError,
+  featchPostSuccess
+} from './actions';
 
 export const featchPostsThunk = () => {
   return async dispatch => {
@@ -8,28 +15,26 @@ export const featchPostsThunk = () => {
 
       const posts = await getPosts();
 
-      dispatch(featchPostSuccess(posts));
+      dispatch(featchPostsSuccess(posts));
       dispatch(featchPosts(false));
     } catch {
       dispatch(featchPosts(false));
-      dispatch(featchPostError('Егор posts'));
+      dispatch(featchPostsError('Егор posts'));
     }
   };
 };
 
-// export const featchPostThunk = id => {
-//   return async dispatch => {
-//     try {
-//       dispatch(featchPersonPosts(true));
+export const featchPostThunk = id => {
+  return async dispatch => {
+    try {
+      dispatch(featchPost(true));
 
-//       const posts = await getUserPosts(id);
+      const post = await getPost(id);
 
-//       dispatch(featchPersonPosts(false));
-//       dispatch(featchPersonPostsSuccess(posts));
-
-//       return posts;
-//     } catch (error) {
-//       dispatch(featchPersonPostsError('Егор User Posts!'));
-//     }
-//   };
-// };
+      dispatch(featchPostSuccess(post));
+      dispatch(featchPost(false));
+    } catch (error) {
+      dispatch(featchPostError('Егор User Posts!'));
+    }
+  };
+};

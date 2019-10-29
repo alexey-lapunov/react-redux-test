@@ -24,8 +24,12 @@ class UserPostsPage extends React.Component {
   setActivePost = id => {
     const { featchUserPost } = this.props;
 
-    this.setState({ isOpenModal: true });
+    this.onModalOpen();
     featchUserPost(id);
+  };
+
+  onModalOpen = () => {
+    this.setState({ isOpenModal: true });
   };
 
   onModalClose = () => {
