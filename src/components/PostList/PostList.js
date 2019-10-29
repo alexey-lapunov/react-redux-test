@@ -4,7 +4,7 @@ import PostCard from '../PostCard';
 
 import styles from './styles.module.scss';
 
-const PostList = ({ posts, setActivePost }) => {
+const PostList = ({ posts, setActivePost = () => {} }) => {
   return (
     <div className={styles.posts}>
       <div className={styles.grid}>

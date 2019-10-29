@@ -6,11 +6,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import appReducer from './app/reducer';
 import usersReducer from './users/reducer';
 import personReducer from './user/reducer';
+import postsReducer from './posts/reducer';
 
 const rootReducer = combineReducers({
   app: appReducer,
   users: usersReducer,
-  user: personReducer
+  user: personReducer,
+  posts: postsReducer
 });
 
 const store = createStore(

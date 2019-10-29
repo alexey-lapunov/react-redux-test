@@ -1,7 +1,7 @@
 import { getUsers } from '../../api/jsonplh';
 import { fetchPeople, fetchPeopleFail, fetchPeopleSuccess } from './actions';
 
-const fetchUsersList = () => {
+export const fetchUsersList = () => {
   return async dispatch => {
     try {
       dispatch(fetchPeople(true));
@@ -18,5 +18,3 @@ const fetchUsersList = () => {
     }
   };
 };
-
-export { fetchUsersList };
