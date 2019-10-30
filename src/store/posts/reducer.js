@@ -1,11 +1,4 @@
-import {
-  FEATCH_POSTS,
-  FEATCH_POSTS_SUCCESS,
-  FEATCH_POSTS_ERROR,
-  FEATCH_POST,
-  FEATCH_POST_SUCCESS,
-  FEATCH_POST_ERROR
-} from './constants';
+import * as C from './constants';
 
 const DEFAUTL_STATE = {
   postsList: {
@@ -22,7 +15,7 @@ const DEFAUTL_STATE = {
 
 const postsReducer = (state = DEFAUTL_STATE, action) => {
   switch (action.type) {
-    case FEATCH_POSTS:
+    case C.FEATCH_POSTS:
       return {
         ...state,
         postsList: {
@@ -30,7 +23,7 @@ const postsReducer = (state = DEFAUTL_STATE, action) => {
           isFetching: action.bool
         }
       };
-    case FEATCH_POSTS_ERROR:
+    case C.FEATCH_POSTS_ERROR:
       return {
         ...state,
         postsList: {
@@ -38,7 +31,7 @@ const postsReducer = (state = DEFAUTL_STATE, action) => {
           error: action.error
         }
       };
-    case FEATCH_POSTS_SUCCESS:
+    case C.FEATCH_POSTS_SUCCESS:
       return {
         ...state,
         postsList: {
@@ -46,7 +39,7 @@ const postsReducer = (state = DEFAUTL_STATE, action) => {
           data: action.data
         }
       };
-    case FEATCH_POST:
+    case C.FEATCH_POST:
       return {
         ...state,
         activePost: {
@@ -54,7 +47,7 @@ const postsReducer = (state = DEFAUTL_STATE, action) => {
           isFetching: action.bool
         }
       };
-    case FEATCH_POST_ERROR:
+    case C.FEATCH_POST_ERROR:
       return {
         ...state,
         activePost: {
@@ -62,7 +55,7 @@ const postsReducer = (state = DEFAUTL_STATE, action) => {
           isFetching: action.bool
         }
       };
-    case FEATCH_POST_SUCCESS:
+    case C.FEATCH_POST_SUCCESS:
       return {
         ...state,
         activePost: {

@@ -18,10 +18,6 @@ const BurgerMenu = ({ isOpen, onIsOpenMenu }) => {
     {
       href: '/posts',
       text: 'Posts'
-    },
-    {
-      href: '/photos',
-      text: 'Photos'
     }
   ];
   return (
