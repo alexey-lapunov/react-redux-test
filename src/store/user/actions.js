@@ -1,41 +1,22 @@
-import {
-  FEATCH_PERSON,
-  FEATCH_PERSON_FAIL,
-  FEATCH_PERSON_SUCCESS,
-  FEATCH_PERSON_POSTS,
-  FEATCH_PERSON_POSTS_FAIL,
-  FEATCH_PERSON_POSTS_SUCCESS,
-  FEATCH_PERSON_POST,
-  FEATCH_PERSON_POST_FAIL,
-  FEATCH_PERSON_POST_SUCCESS,
-  FEATCH_PERSON_ALBUMS,
-  FEATCH_PERSON_ALBUMS_FAIL,
-  FEATCH_PERSON_ALBUMS_SUCCESS,
-  FEATCH_ALBUM_PHOTOS,
-  FEATCH_ALBUM_PHOTOS_FAIL,
-  FEATCH_ALBUM_PHOTOS_SUCCESS,
-  FEATCH_PERSON_TODOS,
-  FEATCH_PERSON_TODOS_FAIL,
-  FEATCH_PERSON_TODOS_SUCCESS
-} from './constants';
+import * as C from './constants';
 
 export const featchPerson = bool => {
   return {
-    type: FEATCH_PERSON,
+    type: C.FEATCH_PERSON,
     bool
   };
 };
 
 export const featchPersonError = text => {
   return {
-    type: FEATCH_PERSON_FAIL,
+    type: C.FEATCH_PERSON_FAIL,
     text
   };
 };
 
 export const featchPersonSuccess = person => {
   return {
-    type: FEATCH_PERSON_SUCCESS,
+    type: C.FEATCH_PERSON_SUCCESS,
     person
   };
 };
@@ -43,21 +24,21 @@ export const featchPersonSuccess = person => {
 // ACTIONS USER POSTS
 export const featchPersonPosts = bool => {
   return {
-    type: FEATCH_PERSON_POSTS,
+    type: C.FEATCH_PERSON_POSTS,
     bool
   };
 };
 
 export const featchPersonPostsError = text => {
   return {
-    type: FEATCH_PERSON_POSTS_FAIL,
+    type: C.FEATCH_PERSON_POSTS_FAIL,
     text
   };
 };
 
 export const featchPersonPostsSuccess = posts => {
   return {
-    type: FEATCH_PERSON_POSTS_SUCCESS,
+    type: C.FEATCH_PERSON_POSTS_SUCCESS,
     posts
   };
 };
@@ -65,21 +46,21 @@ export const featchPersonPostsSuccess = posts => {
 // ACTIONS USER POST
 export const featchPersonPost = bool => {
   return {
-    type: FEATCH_PERSON_POST,
+    type: C.FEATCH_PERSON_POST,
     bool
   };
 };
 
 export const featchPersonPostError = bool => {
   return {
-    type: FEATCH_PERSON_POST_FAIL,
+    type: C.FEATCH_PERSON_POST_FAIL,
     bool
   };
 };
 
 export const featchPersonPostSuccess = post => {
   return {
-    type: FEATCH_PERSON_POST_SUCCESS,
+    type: C.FEATCH_PERSON_POST_SUCCESS,
     post
   };
 };
@@ -87,21 +68,21 @@ export const featchPersonPostSuccess = post => {
 // ACTIONS USER ALBUMS
 export const featchPersonAlbums = bool => {
   return {
-    type: FEATCH_PERSON_ALBUMS,
+    type: C.FEATCH_PERSON_ALBUMS,
     bool
   };
 };
 
 export const featchPersonAlbumsError = bool => {
   return {
-    type: FEATCH_PERSON_ALBUMS_FAIL,
+    type: C.FEATCH_PERSON_ALBUMS_FAIL,
     bool
   };
 };
 
 export const featchPersonAlbumsSuccess = albums => {
   return {
-    type: FEATCH_PERSON_ALBUMS_SUCCESS,
+    type: C.FEATCH_PERSON_ALBUMS_SUCCESS,
     albums
   };
 };
@@ -109,21 +90,21 @@ export const featchPersonAlbumsSuccess = albums => {
 // ACTIONS ALBOM PHOTOS
 export const featchAlbomPhotos = bool => {
   return {
-    type: FEATCH_ALBUM_PHOTOS,
+    type: C.FEATCH_ALBUM_PHOTOS,
     bool
   };
 };
 
 export const featchAlbomPhotosError = bool => {
   return {
-    type: FEATCH_ALBUM_PHOTOS_FAIL,
+    type: C.FEATCH_ALBUM_PHOTOS_FAIL,
     bool
   };
 };
 
 export const featchAlbomPhotosSuccess = photos => {
   return {
-    type: FEATCH_ALBUM_PHOTOS_SUCCESS,
+    type: C.FEATCH_ALBUM_PHOTOS_SUCCESS,
     photos
   };
 };
@@ -131,21 +112,21 @@ export const featchAlbomPhotosSuccess = photos => {
 // ACTIONS PERSON TODOS
 export const featchPersonTodos = bool => {
   return {
-    type: FEATCH_PERSON_TODOS,
+    type: C.FEATCH_PERSON_TODOS,
     bool
   };
 };
 
 export const featchPersonTodosError = bool => {
   return {
-    type: FEATCH_PERSON_TODOS_FAIL,
+    type: C.FEATCH_PERSON_TODOS_FAIL,
     bool
   };
 };
 
 export const featchPersonTodosSuccess = todos => {
   return {
-    type: FEATCH_PERSON_TODOS_SUCCESS,
+    type: C.FEATCH_PERSON_TODOS_SUCCESS,
     todos
   };
 };

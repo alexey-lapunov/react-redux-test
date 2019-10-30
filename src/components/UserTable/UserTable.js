@@ -16,13 +16,15 @@ const UserTable = ({
       <Thead>
         <Row>
           <Cell onClick={onSortByName}>
-            sort by Name
-            <span
-              className={classnames(styles.arrow, {
-                [styles.arrowUp]: directionSortByName === 0,
-                [styles.arrowHidden]: directionSortByName === -1
-              })}
-            />
+            <span className={styles.sortText}>
+              sort by Name
+              <span
+                className={classnames(styles.arrow, {
+                  [styles.arrowUp]: directionSortByName === 0,
+                  [styles.arrowHidden]: directionSortByName === -1
+                })}
+              />
+            </span>
           </Cell>
           <Cell>User Name</Cell>
           <Cell>City</Cell>

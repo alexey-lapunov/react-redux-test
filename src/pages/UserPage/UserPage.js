@@ -61,21 +61,17 @@ class UserPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    user: {
-      data: state.user.person.data,
-      isFetching: state.user.person.isFetching,
-      error: state.user.person.error
-    }
-  };
-};
+const mapStateToProps = state => ({
+  user: {
+    data: state.user.person.data,
+    isFetching: state.user.person.isFetching,
+    error: state.user.person.error
+  }
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    featchUser: id => dispatch(featchUser(id))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  featchUser: id => dispatch(featchUser(id))
+});
 
 export default connect(
   mapStateToProps,

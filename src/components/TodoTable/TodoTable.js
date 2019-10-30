@@ -38,7 +38,9 @@ class TodoTable extends React.Component {
         <Thead>
           <Row>
             <Cell>Todo title</Cell>
-            <Cell onClick={this.sortByCompleted}>sort by Completed</Cell>
+            <Cell onClick={this.sortByCompleted}>
+              <span className={styles.sortText}>sort by Completed</span>
+            </Cell>
           </Row>
         </Thead>
         <Tbody>

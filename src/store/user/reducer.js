@@ -1,23 +1,4 @@
-import {
-  FEATCH_PERSON,
-  FEATCH_PERSON_FAIL,
-  FEATCH_PERSON_SUCCESS,
-  FEATCH_PERSON_POSTS,
-  FEATCH_PERSON_POSTS_FAIL,
-  FEATCH_PERSON_POSTS_SUCCESS,
-  FEATCH_PERSON_POST,
-  FEATCH_PERSON_POST_FAIL,
-  FEATCH_PERSON_POST_SUCCESS,
-  FEATCH_PERSON_ALBUMS,
-  FEATCH_PERSON_ALBUMS_FAIL,
-  FEATCH_PERSON_ALBUMS_SUCCESS,
-  FEATCH_ALBUM_PHOTOS,
-  FEATCH_ALBUM_PHOTOS_FAIL,
-  FEATCH_ALBUM_PHOTOS_SUCCESS,
-  FEATCH_PERSON_TODOS,
-  FEATCH_PERSON_TODOS_FAIL,
-  FEATCH_PERSON_TODOS_SUCCESS
-} from './constants';
+import * as C from './constants';
 
 const DEFAULT_STATE = {
   person: {
@@ -54,7 +35,7 @@ const DEFAULT_STATE = {
 
 const personReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
-    case FEATCH_PERSON:
+    case C.FEATCH_PERSON:
       return {
         ...state,
         person: {
@@ -62,7 +43,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           isFetching: action.bool
         }
       };
-    case FEATCH_PERSON_FAIL:
+    case C.FEATCH_PERSON_FAIL:
       return {
         ...state,
         person: {
@@ -70,7 +51,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           error: action.bool
         }
       };
-    case FEATCH_PERSON_SUCCESS:
+    case C.FEATCH_PERSON_SUCCESS:
       return {
         ...state,
         person: {
@@ -78,7 +59,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           data: action.person
         }
       };
-    case FEATCH_PERSON_POSTS:
+    case C.FEATCH_PERSON_POSTS:
       return {
         ...state,
         posts: {
@@ -86,7 +67,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           isFetching: action.bool
         }
       };
-    case FEATCH_PERSON_POSTS_FAIL:
+    case C.FEATCH_PERSON_POSTS_FAIL:
       return {
         ...state,
         posts: {
@@ -94,7 +75,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           error: action.bool
         }
       };
-    case FEATCH_PERSON_POSTS_SUCCESS:
+    case C.FEATCH_PERSON_POSTS_SUCCESS:
       return {
         ...state,
         posts: {
@@ -102,7 +83,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           data: action.posts
         }
       };
-    case FEATCH_PERSON_POST:
+    case C.FEATCH_PERSON_POST:
       return {
         ...state,
         post: {
@@ -110,7 +91,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           isFetching: action.bool
         }
       };
-    case FEATCH_PERSON_POST_FAIL:
+    case C.FEATCH_PERSON_POST_FAIL:
       return {
         ...state,
         post: {
@@ -118,7 +99,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           error: action.bool
         }
       };
-    case FEATCH_PERSON_POST_SUCCESS:
+    case C.FEATCH_PERSON_POST_SUCCESS:
       return {
         ...state,
         post: {
@@ -126,7 +107,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           data: action.post
         }
       };
-    case FEATCH_PERSON_ALBUMS:
+    case C.FEATCH_PERSON_ALBUMS:
       return {
         ...state,
         photoAlbums: {
@@ -134,7 +115,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           isFetching: action.bool
         }
       };
-    case FEATCH_PERSON_ALBUMS_FAIL:
+    case C.FEATCH_PERSON_ALBUMS_FAIL:
       return {
         ...state,
         photoAlbums: {
@@ -142,7 +123,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           error: action.bool
         }
       };
-    case FEATCH_PERSON_ALBUMS_SUCCESS:
+    case C.FEATCH_PERSON_ALBUMS_SUCCESS:
       return {
         ...state,
         photoAlbums: {
@@ -150,7 +131,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           data: action.albums
         }
       };
-    case FEATCH_ALBUM_PHOTOS:
+    case C.FEATCH_ALBUM_PHOTOS:
       return {
         ...state,
         photos: {
@@ -158,7 +139,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           isFetching: action.bool
         }
       };
-    case FEATCH_ALBUM_PHOTOS_FAIL:
+    case C.FEATCH_ALBUM_PHOTOS_FAIL:
       return {
         ...state,
         photos: {
@@ -166,7 +147,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           error: action.bool
         }
       };
-    case FEATCH_ALBUM_PHOTOS_SUCCESS:
+    case C.FEATCH_ALBUM_PHOTOS_SUCCESS:
       return {
         ...state,
         photos: {
@@ -174,7 +155,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           data: action.photos
         }
       };
-    case FEATCH_PERSON_TODOS:
+    case C.FEATCH_PERSON_TODOS:
       return {
         ...state,
         todos: {
@@ -182,7 +163,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           isFetching: action.bool
         }
       };
-    case FEATCH_PERSON_TODOS_FAIL:
+    case C.FEATCH_PERSON_TODOS_FAIL:
       return {
         ...state,
         todos: {
@@ -190,7 +171,7 @@ const personReducer = (state = DEFAULT_STATE, action) => {
           error: action.bool
         }
       };
-    case FEATCH_PERSON_TODOS_SUCCESS:
+    case C.FEATCH_PERSON_TODOS_SUCCESS:
       return {
         ...state,
         todos: {

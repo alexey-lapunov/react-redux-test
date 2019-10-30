@@ -1,8 +1,4 @@
-import {
-  FETCH_PEOPLE,
-  FETCH_PEOPLE_FAIL,
-  FETCH_PEOPLE_SUCCESS
-} from './constants';
+import * as C from './constants';
 
 const DEFAULT_STATE = {
   people: [],
@@ -12,17 +8,17 @@ const DEFAULT_STATE = {
 
 const usersReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
-    case FETCH_PEOPLE:
+    case C.FETCH_PEOPLE:
       return {
         ...state,
         isFetching: action.bool
       };
-    case FETCH_PEOPLE_FAIL:
+    case C.FETCH_PEOPLE_FAIL:
       return {
         ...state,
         error: action.text
       };
-    case FETCH_PEOPLE_SUCCESS:
+    case C.FETCH_PEOPLE_SUCCESS:
       return {
         ...state,
         people: action.people

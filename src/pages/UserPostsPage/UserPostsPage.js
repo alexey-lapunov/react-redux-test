@@ -90,12 +90,10 @@ const mapStateToProps = state => ({
   }
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    featchUserPosts: id => dispatch(featchUserPosts(id)),
-    featchUserPost: id => dispatch(featchUserPost(id))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  featchUserPosts: id => dispatch(featchUserPosts(id)),
+  featchUserPost: id => dispatch(featchUserPost(id))
+});
 
 export default connect(
   mapStateToProps,
