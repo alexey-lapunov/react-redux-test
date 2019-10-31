@@ -6,6 +6,11 @@
   height: 100%;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
   font-size: 40px;
 
@@ -15,4 +20,9 @@
 
     font-size: 20px;
   }
+}
+
+.desc {
+  font-size: 20px;
+  font-weight: 700;
 }

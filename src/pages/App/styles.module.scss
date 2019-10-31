@@ -1,4 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background-color: $color-fill;
+  font-family: 'Roboto', sans-serif;
+
+  color: $color-base;
+}
+
 .app {
   display: block;
+  height: 100%;
+}
+
+.navbarOuter {
+  padding: 60px 0 0 0;
+  height: 100%;
+}
+
+.container {
+  padding: 20px 40px 0; 
   height: 100%;
 }
